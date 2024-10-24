@@ -5,4 +5,6 @@
 
 ## Suppression mets:structMap TYPE="logical"
 
-## Suppression préfix file-id
+## Suppression préfixe file-id
+
+## Suppression GROUPID
