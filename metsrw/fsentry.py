@@ -421,8 +421,8 @@ class FSEntry(DependencyPossessor):
         ):
             return None
         el = etree.Element(utils.lxmlns("mets") + "file", ID=self.file_id())
-        if self.group_id():
-            el.attrib["GROUPID"] = self.group_id()
+        #if self.group_id():
+        #    el.attrib["GROUPID"] = self.group_id()
         if self.admids:
             el.set("ADMID", " ".join(self.admids))
         if self.dmdids and self.use == "original":

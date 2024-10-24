@@ -32,7 +32,8 @@ def lxmlns(arg):
 # METSRW CONSTANTS #
 ####################
 
-FILE_ID_PREFIX = "file-"
+#FILE_ID_PREFIX = "file-"
+FILE_ID_PREFIX = "" # Pour RBX, préfixe vide
 GROUP_ID_PREFIX = "Group-"
 
 
