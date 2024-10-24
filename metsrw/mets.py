@@ -267,7 +267,7 @@ class METSDocument:
             # TODO Add ability for multiple structMaps
             ID="structMap_1",
             # TODO don't hardcode this
-            LABEL="Archivematica default",
+            # LABEL="Archivematica default",
         )
         for item in self._root_elements:
             child = item.serialize_structmap(recurse=True)
@@ -353,7 +353,8 @@ class METSDocument:
             root.append(struct_map)
         return root
 
-    def tostring(self, fully_qualified=True, pretty_print=True, encoding="UTF-8"):
+    def tostring(self, fully_qualified=True, pretty_print=True, encoding="UTF-8",
+        normative_structmap=True):
         """
         Serialize and return a string of this METS document.
 
@@ -364,15 +365,15 @@ class METSDocument:
 
         :return: String of this document
         """
-        root = self.serialize(fully_qualified=fully_qualified)
+        root = self.serialize(fully_qualified=fully_qualified,
+            normative_structmap=normative_structmap)
         kwargs = {"pretty_print": pretty_print, "encoding": encoding}
         if encoding != "unicode":
             kwargs["xml_declaration"] = True
         return etree.tostring(root, **kwargs)
 
-    def write(
-        self, filepath, fully_qualified=True, pretty_print=False, encoding="UTF-8"
-    ):
+    def write(self, filepath, fully_qualified=True, pretty_print=False,
+        normative_structmap=True, encoding="UTF-8"):
         """Serialize and write this METS document to `filepath`.
 
         The default encoding is ``UTF-8``. This method will return a unicode
@@ -380,7 +381,8 @@ class METSDocument:
 
         :param str filepath: Path to write the METS document to
         """
-        root = self.serialize(fully_qualified=fully_qualified)
+        root = self.serialize(fully_qualified=fully_qualified,
+            normative_structmap=normative_structmap)
         tree = root.getroottree()
         kwargs = {"pretty_print": pretty_print, "encoding": encoding}
         if encoding != "unicode":
